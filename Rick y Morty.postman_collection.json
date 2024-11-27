@@ -1,0 +1,143 @@
+{
+	"info": {
+		"_postman_id": "afeab835-afe8-4f27-9e75-093b5b12c7e2",
+		"name": "Rick y Morty",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39657588"
+	},
+	"item": [
+		{
+			"name": "Todos los personajes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://rickandmortyapi.com/api/character",
+					"protocol": "https",
+					"host": [
+						"rickandmortyapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"character"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Solo un personaje",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validate character name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.name).to.eql(\"Cynthia\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://rickandmortyapi.com/api/character/88",
+					"protocol": "https",
+					"host": [
+						"rickandmortyapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"character",
+						"88"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filtrar personajes",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://rickandmortyapi.com/api/character/?gender=male",
+					"protocol": "https",
+					"host": [
+						"rickandmortyapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"character",
+						""
+					],
+					"query": [
+						{
+							"key": "gender",
+							"value": "male"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
